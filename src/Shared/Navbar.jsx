@@ -5,6 +5,13 @@ const Navbar = () => {
       <li className="text-lg uppercase">
         <Link to='/'>Home</Link>
       </li>
+
+      <li className="text-lg uppercase" >
+        <Link to='/login'>Login</Link>
+      </li>
+      <li className="text-lg uppercase">
+        <Link to='/register'>Register</Link>
+      </li>
     
     </>
     return (
@@ -23,9 +30,8 @@ const Navbar = () => {
       </ul>
     </div>
     
-    <a className="btn btn-ghost text-xl">
-        <img src="https://ibb.co/Bqb9KxM" alt="" />
-    </a>
+    <img className="w-10 rounded-full" src='https://ibb.co/Bqb9KxM' alt="" />
+   
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
