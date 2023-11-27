@@ -7,6 +7,8 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage'
 import Home from './Pages/Home/Home'
 import Login from './Pages/Login/Login'
 import Register from './Pages/Register/Register'
+import Feature from './Components/Feature/Feature'
+import Delivery from './Components/Delivery/Delivery'
 const router=createBrowserRouter([{
   path:'/',
   element:<Root></Root>,
@@ -23,6 +25,17 @@ const router=createBrowserRouter([{
     {
       path:'/register',
       element:<Register></Register>
+    },
+    {
+      path:'/featur',
+      element:<Feature></Feature>,
+      
+    },
+    {
+      path:'/delivery',
+      element:<Delivery></Delivery>,
+      loader:()=>fetch('http://localhost:5000/delivery')
+      
     }
   ])
 

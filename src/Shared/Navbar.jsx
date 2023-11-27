@@ -30,11 +30,11 @@ const Navbar = () => {
       </ul>
     </div>
     
-    <img className="w-10 rounded-full" src='https://ibb.co/Bqb9KxM' alt="" />
+    <img className="w-44 rounded-full" src='https://i.ibb.co/w0cGJmz/5f2c73d9de3d2d7e12298652-logo-BT-500px-p-2600.png' alt="" />
    
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1"> 
       {
         navInfo
       }
@@ -50,3 +50,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
