@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import SocailLogin from "../../Components/SocailLogin/SocailLogin";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    const {signin}=useContext(AuthContext)
     const handleLogin=e=>{
         e.preventDefault()
         const form=e.target;
@@ -10,6 +13,13 @@ const Login = () => {
         const password=form.password.value;
         const allLoginuser={name,email,password}
         console.log(allLoginuser)
+        signin(email,password)
+         .then(result=>{
+            const user=result.user;
+            console.log(user)
+         })
+
+         
     }
 
     return (
@@ -28,7 +38,7 @@ const Login = () => {
                 </form>
                 <SocailLogin></SocailLogin>
                 <Link to='/register'>
-                <p>Not registered? <button className="uppercase"> Create account</button></p>
+                <p>Not registered? <button className="uppercase">Create account</button></p>
                 </Link>
             </div>
            </div>

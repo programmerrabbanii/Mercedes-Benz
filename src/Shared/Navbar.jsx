@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 const Navbar = () => {
     const navInfo=<>
@@ -41,7 +42,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+   <Dropdown></Dropdown>
   </div>
 </div>
             

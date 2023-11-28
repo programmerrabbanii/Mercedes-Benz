@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import SocailLogin from "../../Components/SocailLogin/SocailLogin";
+import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 
 const Register = () => {
+    const [registerError,setRegisterError]=useState('')
+    const {createUser}=useContext(AuthContext)
     const handleRegister= e=>{
         e.preventDefault()
         const form=e.target;
@@ -10,7 +16,20 @@ const Register = () => {
         const password=form.password.value;
         const photoURL=form.photoURL.value;
         const  allRegisteruser={name,email,password,photoURL}
+       
+
+        if(password.length <6){
+            setRegisterError('Password Should Be At Least 6 Characters')
+            return false
+        }
         console.log(allRegisteruser)
+        createUser(email,password)
+        .then(result=>{
+            console.log(result)
+        })
+      
+        
+
         
     }
         
@@ -27,6 +46,10 @@ const Register = () => {
                     <input className="w-full py-2 px-2 border mb-2" type="text" name="photoURL" placeholder="PhotoURL" /><br /> 
                     <input className=" uppercase cursor-pointer w-full py-2 px-2 border mb-2" type="submit" value="sumbit" />
                 </form>
+
+                {
+                    registerError && <p className="text-red-600  capitalize">{registerError}</p>
+                }
                 <SocailLogin></SocailLogin>
                 <Link to='/login'>
                 <p>Already have an account? <button className="uppercase"> Login here</button></p>
