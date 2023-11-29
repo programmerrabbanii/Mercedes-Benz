@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocailLogin from "../../Components/SocailLogin/SocailLogin";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosPublic from "../../Components/Hok/UserAxios";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
+    const navigat=useNavigate()
+    const axiosPublic = useAxiosPublic()
     const [registerError,setRegisterError]=useState('')
     const {createUser}=useContext(AuthContext)
     const handleRegister= e=>{
@@ -16,6 +20,23 @@ const Register = () => {
         const password=form.password.value;
         const photoURL=form.photoURL.value;
         const  allRegisteruser={name,email,password,photoURL}
+        const newUser= {
+            name,email,password,photoURL
+            
+        }
+        
+        axiosPublic.post("/reUsers", newUser).then((res) => {
+            if (res.data.insertedId) {
+              console.log(res.data);
+              Swal.fire({
+                title: "Good Job",
+                text: "Your Data Added the database",
+                icon: "Succes"
+              });
+             
+            }
+          });
+       
        
 
         if(password.length <6){
@@ -25,11 +46,11 @@ const Register = () => {
         console.log(allRegisteruser)
         createUser(email,password)
         .then(result=>{
+            navigat(location?.state ? location.state : '/' )
             console.log(result)
-        })
+            
+        }) 
       
-        
-
         
     }
         
