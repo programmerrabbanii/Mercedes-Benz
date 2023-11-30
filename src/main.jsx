@@ -10,6 +10,8 @@ import Register from './Pages/Register/Register'
 import Feature from './Components/Feature/Feature'
 import Delivery from './Components/Delivery/Delivery'
 import AuthProvider from './Provider/AuthProvider'
+import Dashboard from './Pages/Dashboard'
+import Card from './Dashboard/Card/Card'
 const router=createBrowserRouter([{
   path:'/',
   element:<Root></Root>,
@@ -38,12 +40,22 @@ const router=createBrowserRouter([{
       loader:()=>fetch('http://localhost:5000/delivery')
       
     }
-  ])
+  ]) 
+},
+// dashboard===========================
+{
+  path:'/dashboard',
+  element:<Dashboard></Dashboard>,
+  children:[
+    {
+       path:'/dashboard/card',
+       element:<Card></Card>
 
+    }
+  ]
 
-
-
-}])
+}
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
