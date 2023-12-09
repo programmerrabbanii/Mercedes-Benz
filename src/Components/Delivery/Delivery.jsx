@@ -5,7 +5,7 @@ const Delivery = () => {
     const [delivery,setDelivery]=useState([])
     
     useEffect(()=>{
-        fetch('http://localhost:5000/delivery')
+        fetch('https://assingmenttwelve-server.vercel.app/delivery')
         .then(res=>res.json())
         .then(data=>setDelivery(data))
     },[])

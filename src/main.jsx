@@ -12,6 +12,7 @@ import Delivery from './Components/Delivery/Delivery'
 import AuthProvider from './Provider/AuthProvider'
 import Dashboard from './Pages/Dashboard'
 import Card from './Dashboard/Card/Card'
+import PrivateRoute from './Router/PrivateRoute'
 const router=createBrowserRouter([{
   path:'/',
   element:<Root></Root>,
@@ -37,7 +38,7 @@ const router=createBrowserRouter([{
     {
       path:'/delivery',
       element:<Delivery></Delivery>,
-      loader:()=>fetch('http://localhost:5000/delivery')
+      loader:()=>fetch('https://assingmenttwelve-server.vercel.app/')
       
     }
   ]) 
@@ -45,11 +46,11 @@ const router=createBrowserRouter([{
 // dashboard===========================
 {
   path:'/dashboard',
-  element:<Dashboard></Dashboard>,
+  element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
   children:[
     {
        path:'/dashboard/card',
-       element:<Card></Card>
+       element:<PrivateRoute><Card></Card></PrivateRoute>
 
     }
   ]
